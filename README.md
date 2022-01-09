@@ -1,1 +1,1 @@
-#wordpress theme - Jupiter
+# WordPress Theme - Jupiter

@@ -15,11 +15,13 @@
     <title></title>
 </head>
 <body <?php body_class(); ?> >
-    <?php 
-        if(function_exists('wp_body_open')){
-            wp_body_open();
-        }
-    ?>
-    <header>
-        header
+<?php 
+    if(function_exists('wp_body_open')){
+        wp_body_open();
+    }
+?>
+<div id="page" class="site">
+    <header id="masthead" class="site-header" role="banner">
+        <?php get_template_part('template-parts/header/nav'); ?>
     </header>
+    <div class="content" class="site-content">
