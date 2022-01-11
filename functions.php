@@ -7,26 +7,23 @@
  * 
  */
 
-function jupiter_enqueue_scripts(){
-    //Registration of styles.
-    wp_register_style( 'style-css', get_stylesheet_uri(), [], filemtime(get_template_directory() . '/style.css'), 'all');
-    wp_register_style( 'bootstrap-css', get_template_directory_uri() . '/assets/src/library/css/bootstrap.min.css', [], false, 'all');
-
-    // Registration of Scripts.
-    wp_register_script( 'main-js', get_template_directory_uri() . '/assets/main.js',[], filemtime( get_template_directory() . '/assets/main.js'), true );
-    wp_register_script( 'bootstrap-js', get_template_directory_uri() . '/assets/src/library/js/bootstrap.min.js', ['jquery'], false, true );
-
-    //Enqueue Styles.
-    wp_enqueue_style('style-css');
-    wp_enqueue_style('bootstrap-css');
-
-    //Enqueue Scripts.
-    wp_enqueue_script('main-js');
-    wp_enqueue_script('bootstrap-js');
-
-
+if(! defined('JUPITER_DIR_PATH')){
+    define('JUPITER_DIR_PATH', untrailingslashit( get_template_directory() ));
 }
 
-add_action('wp_enqueue_scripts', 'jupiter_enqueue_scripts');
+if(! defined('JUPITER_DIR_URI')){
+    define('JUPITER_DIR_URI', untrailingslashit( get_template_directory_uri() ));
+}
 
+require_once JUPITER_DIR_PATH . '/inc/helpers/autoloader.php';
+
+function jupiter_get_theme_instance(){
+
+    \JUPITER_THEME\Inc\JUPITER_THEME::get_instance();
+}
+ jupiter_get_theme_instance();
+
+function jupiter_enqueue_scripts(){
+
+}
 ?>
